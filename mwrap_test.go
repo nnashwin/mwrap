@@ -1,6 +1,7 @@
-package mwrap
+package mwrap_test
 
 import (
+	db "github.com/ttymed/mwrap"
 	"gopkg.in/mgo.v2"
 	"os"
 	"reflect"
@@ -10,7 +11,7 @@ import (
 func TestNewSession(t *testing.T) {
 	testSess := mgo.Session{}
 	expected := &testSess
-	actual, err := NewSession("mongodb://localhost")
+	actual, err := db.NewSession("mongodb://localhost")
 	if err != nil {
 		os.Exit(1)
 	}
@@ -23,7 +24,7 @@ func TestNewSession(t *testing.T) {
 func TestGetColl(t *testing.T) {
 	testColl := mgo.Collection{}
 	expected := &testColl
-	actual, err := GetColl("mongodb://localhost", "test", "test")
+	actual, err := db.GetColl("mongodb://localhost", "test", "test")
 	if err != nil {
 		os.Exit(1)
 	}
